@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Back Bone Router</title>
+</head>
+<body>
+    <a href="#action">Activate route</a>
+	<a href="#/route/action">Activate another route</a>
+	<a href="#/posts/2958">Post ID</a>
+	<a href="#/hi/bubo">Hi Bubo</a>
+	
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script src="js/lib/underscore-min-1.2.1.js"></script>
+    <script src="js/lib/backbone-min-0.5.3.js"></script>
+    <script>
+    var AppRouter = Backbone.Router.extend({
+        routes: {
+            "/posts/:id": "getPost",
+            "/:route/:action": "routeAction",
+            "*actions": "defaultRoute", // matches http://example.com/#anything-here
+        },
+        defaultRoute: function( actions ){
+            // The variable passed in matches the variable in the route definition "actions"
+            console.log(actions);
+        },
+        getPost : function(id) {
+        	console.log('post id = ' + id);
+        },
+        routeAction : function(route, action) {
+        	console.log('route = ' + route);
+        	console.log('action = ' + action);
+        }
+    });
+    // Initiate the router
+    var app_router = new AppRouter;
+    // Start Backbone history a neccesary step for bookmarkable URL's
+    Backbone.history.start();
+	</script>
+</body>
+</html>
+
