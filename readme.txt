@@ -1,2 +1,2 @@
 - Collections.refresh is renamed to Collections.reset (changed in ??)
-- rounter used to be controller (changed in version 0.5)
+- router used to be controller (changed in version 0.5)

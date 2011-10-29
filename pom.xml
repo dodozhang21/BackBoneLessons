@@ -1,0 +1,81 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>net.pureessence</groupId>
+	<artifactId>BackBoneLessons</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+
+	<name>BackBoneLessons</name>
+	<url>https://github.com/dodozhang21/BackBoneLessons</url>
+	
+	<properties>
+        <jstd.version>1.3.2.5</jstd.version>
+        <server.port>9876</server.port>
+    </properties>
+	
+	<repositories>
+		<repository>
+			<id>jstd-maven-plugin google code repo</id>
+			<url>http://jstd-maven-plugin.googlecode.com/svn/maven2</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>jstd-maven-plugin google code repo</id>
+			<url>http://jstd-maven-plugin.googlecode.com/svn/maven2</url>
+		</pluginRepository>
+	</pluginRepositories>
+	
+	<dependencies>
+		<dependency>
+			<groupId>com.googlecode.jstd-maven-plugin</groupId>
+			<artifactId>jstd-maven-plugin</artifactId>
+			<version>${jstd.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	
+	
+	<build>
+        <finalName>BackBoneLessons</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.0.2</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.googlecode.jstd-maven-plugin</groupId>
+                <artifactId>jstd-maven-plugin</artifactId>
+                <version>${jstd.version}</version>
+                <configuration>
+                    <verbose>true</verbose>
+<!--                     <server>http://localhost:9876</server> -->
+                    <!-- You might need to adjust this depending on your OS.  On Mac,
+                         this will launch your default browser -->
+                    <browser>C:\Program Files\Internet Explorer\iexplore.exe</browser>
+<!--                     <browser>C:\Program Files\Internet Explorer\iexplore.exe, C:\Program Files (x86)\Mozilla Firefox\firefox.exe</browser> -->
+					<config>jsTestDriver.conf</config>
+                    <port>${server.port}</port>
+                    <testOutput>target/jsTestDriver</testOutput>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>run-tests</id>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
