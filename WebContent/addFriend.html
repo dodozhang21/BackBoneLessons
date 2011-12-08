@@ -4,6 +4,7 @@
     <title>Add Friend</title>
 </head>
 <body>
+	<input id="new-friend" />
     <button id="add-friend">Add Friend</button>
     <ul id="friends-list">
     </ul>
@@ -40,7 +41,8 @@
 										"click #add-friend" : "showPrompt",
 									},
 									showPrompt : function() {
-										var friend_name = prompt("Who is your friend?");
+										//var friend_name = prompt("Who is your friend?");
+										var friend_name = $('#new-friend').val();
 										var friend_model = new Friend({
 											name : friend_name
 										});
